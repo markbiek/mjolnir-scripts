@@ -3,7 +3,8 @@ local hotkey = require "mjolnir.hotkey"
 local window = require "mjolnir.window"
 local fnutils = require "mjolnir.fnutils"
 
-hotkey.bind({"cmd", "alt", "ctrl"}, "D", function()
+-- Position the current window in the bottom-right corner
+hotkey.bind({"cmd", "alt", "ctrl"}, "down", function()
     local win = window.focusedwindow()
     local f = win:frame()
 
@@ -20,6 +21,17 @@ hotkey.bind({"cmd", "alt", "ctrl"}, "D", function()
     -- Position the current window in the bottom right corner of the screen
     f.x = bottomRight.x - f.w
     f.y = bottomRight.y - f.h
+    win:setframe(f)
+
+    -- mjolnir.openconsole();
+end)
+
+-- Move the current window up by a distance of the window height
+hotkey.bind({"cmd", "alt", "ctrl"}, "up", function()
+    local win = window.focusedwindow()
+    local f = win:frame()
+
+    f.y = f.y - f.h
     win:setframe(f)
 
     -- mjolnir.openconsole();
