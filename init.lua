@@ -4,5 +4,6 @@ package.path = '/Users/mark/dev/mjolnir/?.lua;' .. package.path
 local application = require "mjolnir.application"
 local hotkey = require "mjolnir.hotkey"
 local window = require "mjolnir.window"
+local screen = require "mjolnir.screen"
 local fnutils = require "mjolnir.fnutils"
 local mwin = require "mjolnir-win"

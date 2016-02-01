@@ -1,7 +1,24 @@
 local application = require "mjolnir.application"
 local hotkey = require "mjolnir.hotkey"
+local screen = require "mjolnir.screen"
 local window = require "mjolnir.window"
 local fnutils = require "mjolnir.fnutils"
+
+hotkey.bind({"cmd", "alt", "ctrl"}, "left", function()
+    local win = window.focusedwindow()
+    local f = win:frame()
+
+    local mainScreen = screen.mainscreen()
+    local prevScreen = mainScreen:previous()
+    local prevScreenFrame = prevScreen:frame()
+
+    print(f.x, f.y)
+
+    f.x = f.x - prevScreenFrame.x
+    f.y = f.y - prevScreenFrame.y
+    print(f.x, f.y)
+    win:setframe(f)
+end)
 
 -- CMD-OPT-f full screen
 hotkey.bind({"cmd", "alt"}, "f", function()
